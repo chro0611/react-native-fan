@@ -9,13 +9,10 @@ Pod::Spec.new do |s|
   s.homepage     = package["homepage"]
   s.license      = package["license"]
   s.authors      = package["author"]
-
   s.platforms    = { :ios => "9.0" }
   s.source       = { :git => "https://github.com/chro0611/react-native-fan.git", :tag => "#{s.version}" }
+  s.dependency     "React"
+  s.dependency     "FBAudienceNetwork"
 
-  
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  
-
-  s.dependency "React"
 end

@@ -1,9 +1,14 @@
 import { NativeModules } from 'react-native';
 
 type FanType = {
-  multiply(a: number, b: number): Promise<number>;
+  initialized(placementId : String) : void;
+  isLoad() : boolean;
+  loadAd() : Promise<boolean>;
+  showAd() : Promise<boolean>;
 };
 
-const { Fan } = NativeModules;
+const Fan = NativeModules.Fan as FanType;
 
-export default Fan as FanType;
+export {
+  Fan
+};

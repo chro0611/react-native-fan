@@ -1,17 +1,28 @@
-import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import Fan from 'react-native-fan';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { Fan } from 'react-native-fan';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
 
-  React.useEffect(() => {
-    Fan.multiply(3, 7).then(setResult);
+  const showAd = async () => {
+    console.log(await(Fan.isLoad()));
+
+    Fan.showAd().then(result=>{
+        console.log("result====>", result);
+        Fan.loadAd();
+    }).catch(error=>{
+      console.log("error===>",error);
+    });
+  }
+
+  useEffect(() => {
+    Fan.initialized('270990974330870_285253309571303');
+    Fan.loadAd();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button onPress={showAd} title={"test"} />
     </View>
   );
 }
