@@ -41,14 +41,6 @@ RCT_EXPORT_MODULE(Fan)
 }
 
 RCT_EXPORT_METHOD(
-                  initialized:(NSString *)placementId
-)
-{
-    _placementId = [NSString stringWithFormat:@"%@#%@", @"VID_HD_9_16_39S_APP_INSTALL", placementId];
-    //_placementId = placementId;
-}
-
-RCT_EXPORT_METHOD(
                   isLoad:(RCTPromiseResolveBlock)resolve
                   isLoadRejector:(RCTPromiseRejectBlock)reject
 )
@@ -57,10 +49,13 @@ RCT_EXPORT_METHOD(
 }
 
 RCT_EXPORT_METHOD(
-                  loadAd:(RCTPromiseResolveBlock)resolve
+                  loadAd:(NSString *)placementId
+                  loadAdResolver:(RCTPromiseResolveBlock)resolve
                   loadAdRejector:(RCTPromiseRejectBlock)reject
                   )
 {
+  _placementId = [NSString stringWithFormat:@"%@#%@", @"VID_HD_9_16_39S_APP_INSTALL", placementId];
+
   _loadResolve = resolve;
   _loadReject = reject;
   
@@ -90,7 +85,7 @@ RCT_EXPORT_METHOD(
     };
     
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
-    dispatch_sync(mainQueue, runShow);
+    dispatch_async(mainQueue, runShow);
 }
 
 - (void)cleanUp

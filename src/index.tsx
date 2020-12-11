@@ -1,9 +1,8 @@
 import { NativeModules } from 'react-native';
 
 type FanType = {
-  initialized(placementId : String) : void;
   isLoad() : Promise<boolean>;
-  loadAd() : Promise<boolean>;
+  loadAd(placementId : String) : Promise<boolean>;
   showAd() : Promise<boolean>;
 };
 

@@ -9,15 +9,18 @@ export default function App() {
 
     Fan.showAd().then(result=>{
         console.log("result====>", result);
-        Fan.loadAd();
+        Fan.loadAd('737014050218983_737022993551422');
     }).catch(error=>{
       console.log("error===>",error);
     });
   }
 
   useEffect(() => {
-    Fan.initialized('270990974330870_285253309571303');
-    Fan.loadAd();
+    Fan.loadAd('737014050218983_737022993551422').then(message=>{
+      console.log(message);
+    }).catch(error=>{
+      console.log(error);
+    });
   }, []);
 
   return (
