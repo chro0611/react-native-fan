@@ -60,13 +60,11 @@ RCT_EXPORT_METHOD(
   _loadReject = reject;
   
   _interstitialAd = [[FBInterstitialAd alloc] initWithPlacementID:_placementId];
-  
   __block FBInterstitialAd *interstital = _interstitialAd;
 
   void (^runLoad)(void) = ^(void) {
     interstital.delegate = self;
-  
-    [self->interstital loadAd];
+    [interstital loadAd];
   };
     
   dispatch_queue_t mainQueue = dispatch_get_main_queue();
