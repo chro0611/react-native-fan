@@ -16,7 +16,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    Fan.loadAd('737014050218983_737022993551422').then(message=>{
+    Fan.loadAd('270990974330870_285253309571303').then(message=>{
       console.log(message);
     }).catch(error=>{
       console.log(error);

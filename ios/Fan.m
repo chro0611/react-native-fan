@@ -60,16 +60,9 @@ RCT_EXPORT_METHOD(
   _loadReject = reject;
   
   _interstitialAd = [[FBInterstitialAd alloc] initWithPlacementID:_placementId];
-
-    __block FanManager *adsDelegate = self;
     
-  void (^runLoad)(void) = ^(void) {
-      adsDelegate->_interstitialAd.delegate = adsDelegate;
-      [adsDelegate->_interstitialAd loadAd];
-  };
-    
-  dispatch_queue_t mainQueue = dispatch_get_main_queue();
-  dispatch_async(mainQueue, runLoad);
+  _interstitialAd.delegate = self;
+  [self->_interstitialAd loadAd];
 }
 
 RCT_EXPORT_METHOD(
